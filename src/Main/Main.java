@@ -11,7 +11,6 @@ public class Main {
         Polynomial polynomial2 = new Polynomial("1x^0 + 1x^2");
         Polynomial polynomial3 = new Polynomial("2x^2 + 1x^1");
         Polynomial polynomial4 = new Polynomial("1x^2 - 3x^1 - 5");
-        Polynomial helper = new Polynomial();
 
         System.out.println("Sum of " + polynomial1 + " and " + polynomial2 + " is:  " + add(polynomial1, polynomial2));
         System.out.println("Difference of " + polynomial1 + " and " + polynomial2 + " is:  " + subtract(polynomial1, polynomial2));
