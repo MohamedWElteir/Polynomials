@@ -37,14 +37,14 @@ public class Polynomial {
         }
     }
 
-    public String evaluate(Polynomial poly1, int x) {
+    public static double evaluate(Polynomial poly1, int x) {
         Node current = poly1.head;
         double result = 0;
         while (current != null) {
             result += current.coefficient * Math.pow(x, current.exponent);
             current = current.next;
         }
-        return String.valueOf(result);
+        return result;
     }
 
 
@@ -52,7 +52,7 @@ public class Polynomial {
         return insert(head, coefficient, exponent);
     }
 
-    public Node insert(Node head, int coefficient, int exponent) {
+    public static Node insert(Node head, int coefficient, int exponent) {
         Node newNode = new Node(coefficient, exponent);
         // insert into an empty list AKA create a new linked-list
         if (head == null) {
@@ -82,7 +82,7 @@ public class Polynomial {
         return head;
     }
 
-    public Polynomial add(Polynomial poly1, Polynomial poly2) {
+    public static Polynomial add(Polynomial poly1, Polynomial poly2) {
         Node result = null;
         Node head1 = poly1.head, head2 = poly2.head;
         // loop over the two polynomials
@@ -116,7 +116,7 @@ public class Polynomial {
         return new Polynomial(result);
     }
 
-    public Polynomial multiply(Polynomial poly1, Polynomial poly2) {
+    public static Polynomial multiply(Polynomial poly1, Polynomial poly2) {
         Node result = null;
         Node head1 = poly1.head, head2 = poly2.head;
 
@@ -133,7 +133,7 @@ public class Polynomial {
         return new Polynomial(result);
     }
 
-    public Polynomial subtract(Polynomial poly1, Polynomial poly2) {
+    public static Polynomial subtract(Polynomial poly1, Polynomial poly2) {
         // same logic as the add method
         Node result = null;
         Node temp1 = poly1.head, temp2 = poly2.head;
@@ -165,7 +165,7 @@ public class Polynomial {
         return new Polynomial(result);
     }
 
-    public Polynomial differentiate(Polynomial poly) {
+    public static Polynomial differentiate(Polynomial poly) {
         Node result = null;
         Node currentTerm = poly.head;
         while (currentTerm != null) {
@@ -182,7 +182,7 @@ public class Polynomial {
         return new Polynomial(result);
     }
 
-    public Polynomial integrate(Polynomial poly) {
+    public static Polynomial integrate(Polynomial poly) {
         Node result = null;
         Node currentTerm = poly.head;
         while (currentTerm != null) {
