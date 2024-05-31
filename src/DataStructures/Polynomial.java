@@ -39,7 +39,7 @@ public class Polynomial {
 
     public String evaluate(Polynomial poly1, int x) {
         Node current = poly1.head;
-        int result = 0;
+        double result = 0;
         while (current != null) {
             result += current.coefficient * Math.pow(x, current.exponent);
             current = current.next;
