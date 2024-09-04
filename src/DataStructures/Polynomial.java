@@ -4,6 +4,7 @@ public class Polynomial {
     public Node head;
 
     // default constructor
+    @SuppressWarnings("unused")
     public Polynomial(){
         head = null;
     }
@@ -17,7 +18,7 @@ public class Polynomial {
     public Polynomial(String polynomial) {
         String[] terms = polynomial.split(" ");
         for (String term : terms) {
-            String[] parts = term.split("x\\^");
+            var parts = term.split("x\\^");
             switch (parts.length) {
                 case 2 -> {
                     int coefficient = Integer.parseInt(parts[0]);
@@ -25,14 +26,18 @@ public class Polynomial {
                     head = insert(coefficient, exponent);
                 }
                 case 1 -> {
-                    // if it is a sign, ignore it
-                    if (parts[0].equals("+") || parts[0].equals("-")) {
-                        continue;
+                   // Coefficients
+                    int coefficient;
+                    if (!(parts[0].equals("+") || parts[0].equals("-"))) {
+                        coefficient = Integer.parseInt(parts[0]);
                     }
                     // Constants
-                    int coefficient = Integer.parseInt(parts[0]);
+                    else {
+                        coefficient = parts[0].equals("+") ? 1 : -1;
+                    }
                     head = insert(coefficient, 0);
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + parts.length);
             }
         }
     }
@@ -52,7 +57,7 @@ public class Polynomial {
         return insert(head, coefficient, exponent);
     }
 
-    public static Node insert(Node head, int coefficient, int exponent) {
+    private static Node insert(Node head, int coefficient, int exponent) {
         Node newNode = new Node(coefficient, exponent);
         // insert into an empty list AKA create a new linked-list
         if (head == null) {
@@ -194,10 +199,8 @@ public class Polynomial {
     }
 
     // to implement later,
-    public double getX(Polynomial polynomial){
-        double result = 0;
-
-        return result;
+    public static double getX(Polynomial polynomial){
+       return new Polynomial(polynomial.head).head.coefficient;
     }
 
 
